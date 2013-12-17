@@ -7,7 +7,7 @@
 //
 
 #import "DSEC2Operation.h"
-#import <AWSiOSSDK/EC2/AWSEC2.h>
+#import <AWSiOSSDK/EC2/AmazonEC2Client.h>
 
 #pragma mark Private Methods
 
@@ -132,7 +132,7 @@
 
     if (self.request == nil)
         return nil;
-    
+
     else
     {
         NSString *className = NSStringFromClass([self.request class]);
@@ -167,7 +167,7 @@
     // Create the request
     EC2DescribeInstancesRequest *request = [[EC2DescribeInstancesRequest alloc] init];
     [request addInstanceId:instance.instanceId];
-    
+
     return [DSEC2Operation waitOperationWithRequest:request
                                               owner:owner
                                        untilKeyPath:@"reservations.@unionOfObjects.instances.@unionOfObjects.state.name"
@@ -181,7 +181,7 @@
     // Create the request
     EC2DescribeInstancesRequest *request = [[EC2DescribeInstancesRequest alloc] init];
     [request addInstanceId:instance.instanceId];
-    
+
     return [DSEC2Operation waitOperationWithRequest:request
                                               owner:owner
                                        untilKeyPath:@"reservations.@unionOfObjects.instances.@unionOfObjects.state.name"

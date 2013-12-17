@@ -7,7 +7,7 @@
 //
 
 #import "DSSQSOperation.h"
-#import <AWSiOSSDK/SQS/AWSSQS.h>
+#import <AWSiOSSDK/SQS/AmazonSQSClient.h>
 
 #pragma mark Private Methods
 
@@ -52,17 +52,17 @@
         @"SQSSendMessageRequest":                       @"sendMessage:",
         @"SQSSetQueueAttributesRequest":                @"setQueueAttributes:"
     };
-    
+
     if (self.request == nil)
         return nil;
-    
+
     else
     {
         NSString *className = NSStringFromClass([self.request class]);
         NSString *selectorName = [mapping objectForKey:className];
         if (selectorName != nil)
             return NSSelectorFromString(selectorName);
-        
+
         // default
         return nil;
     }

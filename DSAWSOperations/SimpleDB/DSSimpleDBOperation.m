@@ -7,7 +7,7 @@
 //
 
 #import "DSSimpleDBOperation.h"
-#import <AWSiOSSDK/SimpleDB/AWSSimpleDB.h>
+#import <AWSiOSSDK/SimpleDB/AmazonSimpleDBClient.h>
 
 #pragma mark Private Methods
 
@@ -47,17 +47,17 @@
         @"SimpleDBPutAttributesRequest":            @"putAttributes:",
         @"SimpleDBSelectRequest":                   @"select:"
     };
-    
+
     if (self.request == nil)
         return nil;
-    
+
     else
     {
         NSString *className = NSStringFromClass([self.request class]);
         NSString *selectorName = [mapping objectForKey:className];
         if (selectorName != nil)
             return NSSelectorFromString(selectorName);
-        
+
         // default
         return nil;
     }

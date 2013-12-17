@@ -7,7 +7,7 @@
 //
 
 #import "DSCloudWatchOperation.h"
-#import <AWSiOSSDK/iOSSDK/CloudWatch/AWSCloudWatch.h>
+#import <AWSiOSSDK/CloudWatch/AmazonCloudWatchClient.h>
 
 #pragma mark Private Methods
 
@@ -48,17 +48,17 @@
         @"CloudWatchPutMetricDataRequest":                  @"putMetricData:",
         @"CloudWatchSetAlarmStateRequest":                  @"setAlarmState:"
     };
-    
+
     if (self.request == nil)
         return nil;
-    
+
     else
     {
         NSString *className = NSStringFromClass([self.request class]);
         NSString *selectorName = [mapping objectForKey:className];
         if (selectorName != nil)
             return NSSelectorFromString(selectorName);
-        
+
         // default
         return nil;
     }

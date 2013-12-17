@@ -7,7 +7,7 @@
 //
 
 #import "DSDynamoDBOperation.h"
-#import <AWSiOSSDK/DynamoDB/AWSDynamoDB.h>
+#import <AWSiOSSDK/DynamoDB/AmazonDynamoDBClient.h>
 
 #pragma mark Private Methods
 
@@ -50,17 +50,17 @@
         @"DynamoDBUpdateItemRequest":       @"updateItem:",
         @"DynamoDBUpdateTableRequest":      @"updateTable:",
     };
-    
+
     if (self.request == nil)
         return nil;
-    
+
     else
     {
         NSString *className = NSStringFromClass([self.request class]);
         NSString *selectorName = [mapping objectForKey:className];
         if (selectorName != nil)
             return NSSelectorFromString(selectorName);
-        
+
         // default
         return nil;
     }

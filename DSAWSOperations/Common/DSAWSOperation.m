@@ -1,5 +1,5 @@
 //
-//  DSAWSGenericOperation.m
+//  DSAWSOperation.m
 //  Kestrel
 //
 //  Created by Rob Amos on 3/10/2013.
@@ -7,7 +7,7 @@
 //
 
 #import "DSAWSOperation.h"
-#import <AWSiOSSDK/Runtime/AWSRuntime.h>
+#import <AWSiOSSDK/AmazonWebServiceClient.h>
 #import "DSAWSOperationQueue.h"
 #import "DSRegion.h"
 #import "NSArray+DSArrayFlattening.h"
@@ -71,10 +71,10 @@
         [self setInternalCompletionBlock:completion];
         [self setOwner:owner];
         [self setQueuePriority:NSOperationQueuePriorityLow];
-        
+
         // default to checking immediately
         [self setCheckImmediately:YES];
-        
+
         // execution management
         [self setExecuting:NO];
         [self setFinished:NO];
@@ -126,12 +126,12 @@
         // we stop waiting on any exception
         if (exception != nil || response == nil)
             return NO;
-        
+
         // see if we can find any matching rows on the keyPath
         @try
         {
             id value = [response valueForKeyPath:keyPath];
-            
+
             // is the value an array?
             if ([value isKindOfClass:[NSArray class]])
             {
@@ -151,7 +151,7 @@
                 return ![values containsObject:value];
             }
         }
-        
+
         // can't find the keypath?
         @catch (NSException *e)
         {
@@ -206,7 +206,7 @@
 {
     DSAWSOperationQueue *queue = self.queue;
     NSAssert(queue != nil, @"You must run each DSAWSOperation on a DSAWSOperationQueue, or else override -amazonCredentials and -region.");
-    
+
     return [queue amazonCredentialsForOperation:self];
 }
 
@@ -236,7 +236,7 @@
         [self setFinished:YES];
         return;
     }
-    
+
     // secondly, start executing
     [self setExecuting:YES];
     [self setPollingAttempts:0];
@@ -261,24 +261,24 @@
     SEL clientSelector = [self clientSelector];
     id request = self.request;
     AmazonCredentials *credentials = [self amazonCredentials];
-    
+
     NSAssert(clientClass != nil, @"Client Class cannot be nil. Have you overridden -clientClass?");
     NSAssert(clientSelector != nil, @"Client Selector cannot be nil. Have you overridden -clientSelector?");
     NSAssert(request != nil, @"Request must be provided for all AWS Operations.");
     NSAssert(credentials != nil, @"Must have credentials for all AWS Operations.");
-    
+
     // have we been cancelled since?
     if ([self isCancelled])
     {
         [self setFinished:YES];
         return;
     }
-    
+
     @try
     {
         // so we want to capture the class and execute the operation
         AmazonWebServiceClient *client = [[clientClass alloc] initWithCredentials:credentials];
-        
+
         // set the region if we're not regionless
         if (![self isRegionFree])
         {
@@ -286,7 +286,7 @@
             if (region != nil)
                 [client setEndpoint:[region endpointForService:clientClass secure:YES]];
         }
-        
+
         // ensure we can actually run this thing
         if (![client respondsToSelector:clientSelector])
         {
@@ -296,7 +296,7 @@
             [self setExecuting:NO];
             [self setFinished:YES];
         }
-        
+
         // one last cancelled check before we fire
         if ([self isCancelled])
         {
@@ -307,13 +307,13 @@
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
-        
+
         // fire off the request to AWS
         NSLog(@"-[%@ %@] Executing operation.", NSStringFromClass(clientClass), NSStringFromSelector(clientSelector));
         [self setResponse:[client performSelector:clientSelector withObject:request]];
 
 #pragma clang diagnostic pop
-        
+
         // should we keep waiting?
         [self setPollingAttempts:(self.pollingAttempts + 1)];
         if (self.shouldContinueWaiting != nil && self.pollingAttempts < [self pollingMaxAttempts])
@@ -336,7 +336,7 @@
         // all finished
         [self setExecuting:NO];
         [self setFinished:YES];
-        
+
     }
     @catch (NSException *exception)
     {

@@ -7,7 +7,7 @@
 //
 
 #import "DSAutoScalingOperation.h"
-#import <AWSiOSSDK/AutoScaling/AWSAutoScaling.h>
+#import <AWSiOSSDK/AutoScaling/AmazonAutoScalingClient.h>
 
 #pragma mark Private Methods
 

@@ -7,7 +7,7 @@
 //
 
 #import "DSSTSOperation.h"
-#import <AWSiOSSDK/SecurityTokenService/AWSSecurityTokenService.h>
+#import <AWSiOSSDK/STS/AmazonSecurityTokenServiceClient.h>
 
 #pragma mark Private Methods
 
@@ -43,17 +43,17 @@
         @"SecurityTokenServiceGetFederationTokenRequest":           @"getFederationToken:",
         @"SecurityTokenServiceGetSessionTokenRequest":              @"getSessionToken:"
     };
-    
+
     if (self.request == nil)
         return nil;
-    
+
     else
     {
         NSString *className = NSStringFromClass([self.request class]);
         NSString *selectorName = [mapping objectForKey:className];
         if (selectorName != nil)
             return NSSelectorFromString(selectorName);
-        
+
         // default
         return nil;
     }

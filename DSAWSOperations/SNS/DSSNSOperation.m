@@ -7,7 +7,7 @@
 //
 
 #import "DSSNSOperation.h"
-#import <AWSiOSSDK/SNS/AWSSNS.h>
+#import <AWSiOSSDK/SNS/AmazonSNSClient.h>
 
 #pragma mark Private Methods
 
@@ -62,17 +62,17 @@
         @"SNSSubscribeRequest":                           @"subscribe:",
         @"SNSUnsubscribeRequest":                         @"unsubscribe:"
     };
-    
+
     if (self.request == nil)
         return nil;
-    
+
     else
     {
         NSString *className = NSStringFromClass([self.request class]);
         NSString *selectorName = [mapping objectForKey:className];
         if (selectorName != nil)
             return NSSelectorFromString(selectorName);
-        
+
         // default
         return nil;
     }
