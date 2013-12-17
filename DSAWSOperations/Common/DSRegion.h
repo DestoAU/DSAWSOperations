@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <AWSiOSSDK/Runtime/AWSRuntime.h>
+#import <AWSiOSSDK/AmazonEndpoints.h>
 
 @class EC2Region;
 

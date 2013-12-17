@@ -7,7 +7,7 @@
 //
 
 #import "DSS3Operation.h"
-#import <AWSiOSSDK/S3/AWSS3.h>
+#import <AWSiOSSDK/S3/AmazonS3Client.h>
 
 #pragma mark Private Methods
 
@@ -77,17 +77,17 @@
         @"S3SetBucketWebsiteConfigurationRequest":      @"setBucketWebsiteConfiguration:",
         @"S3UploadPartRequest":                         @"uploadPart:"
     };
-    
+
     if (self.request == nil)
         return nil;
-    
+
     else
     {
         NSString *className = NSStringFromClass([self.request class]);
         NSString *selectorName = [mapping objectForKey:className];
         if (selectorName != nil)
             return NSSelectorFromString(selectorName);
-        
+
         // default
         return nil;
     }

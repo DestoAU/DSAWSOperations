@@ -7,7 +7,7 @@
 //
 
 #import "DSSESOperation.h"
-#import <AWSiOSSDK/SES/AWSSES.h>
+#import <AWSiOSSDK/SES/AmazonSESClient.h>
 
 #pragma mark Private Methods
 
@@ -55,17 +55,17 @@
         @"SESVerifyEmailAddressRequest":                    @"verifyEmailAddress:",
         @"SESVerifyEmailIdentityRequest":                   @"verifyEmailIdentity:"
     };
-    
+
     if (self.request == nil)
         return nil;
-    
+
     else
     {
         NSString *className = NSStringFromClass([self.request class]);
         NSString *selectorName = [mapping objectForKey:className];
         if (selectorName != nil)
             return NSSelectorFromString(selectorName);
-        
+
         // default
         return nil;
     }

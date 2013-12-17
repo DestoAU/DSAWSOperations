@@ -7,7 +7,7 @@
 //
 
 #import "DSELBOperation.h"
-#import <AWSiOSSDK/ElasticLoadBalancing/AWSElasticLoadBalancing.h>
+#import <AWSiOSSDK/ElasticLoadBalancing/AmazonElasticLoadBalancingClient.h>
 
 #pragma mark Private Methods
 
@@ -60,17 +60,17 @@
         @"ElasticLoadBalancingSetLoadBalancerPoliciesForBackendServerRequest":    @"setLoadBalancerPoliciesForBackendServer:",
         @"ElasticLoadBalancingSetLoadBalancerPoliciesOfListenerRequest":          @"setLoadBalancerPoliciesOfListener:"
     };
-    
+
     if (self.request == nil)
         return nil;
-    
+
     else
     {
         NSString *className = NSStringFromClass([self.request class]);
         NSString *selectorName = [mapping objectForKey:className];
         if (selectorName != nil)
             return NSSelectorFromString(selectorName);
-        
+
         // default
         return nil;
     }
