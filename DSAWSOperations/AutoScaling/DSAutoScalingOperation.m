@@ -7,7 +7,7 @@
 //
 
 #import "DSAutoScalingOperation.h"
-#import <AWSAutoScaling/AWSAutoScaling.h>
+#import <AWSiOSSDK/AutoScaling/AWSAutoScaling.h>
 
 #pragma mark Private Methods
 
@@ -71,17 +71,17 @@
         @"AutoScalingTerminateInstanceInAutoScalingGroupRequest":       @"terminateInstanceInAutoScalingGroup:",
         @"AutoScalingUpdateAutoScalingGroupRequest":                    @"updateAutoScalingGroup:"
     };
-    
+
     if (self.request == nil)
         return nil;
-    
+
     else
     {
         NSString *className = NSStringFromClass([self.request class]);
         NSString *selectorName = [mapping objectForKey:className];
         if (selectorName != nil)
             return NSSelectorFromString(selectorName);
-        
+
         // default
         return nil;
     }

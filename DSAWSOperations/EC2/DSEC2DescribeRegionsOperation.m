@@ -7,7 +7,7 @@
 //
 
 #import "DSEC2DescribeRegionsOperation.h"
-#import <AWSEC2/AWSEC2.h>
+#import <AWSiOSSDK/EC2/AWSEC2.h>
 
 #pragma mark Private Methods
 

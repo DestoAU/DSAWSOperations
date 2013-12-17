@@ -7,7 +7,7 @@
 //
 
 #import "DSSNSOperation.h"
-#import <AWSSNS/AWSSNS.h>
+#import <AWSiOSSDK/SNS/AWSSNS.h>
 
 #pragma mark Private Methods
 

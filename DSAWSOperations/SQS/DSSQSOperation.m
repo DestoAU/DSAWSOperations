@@ -7,7 +7,7 @@
 //
 
 #import "DSSQSOperation.h"
-#import <AWSSQS/AWSSQS.h>
+#import <AWSiOSSDK/SQS/AWSSQS.h>
 
 #pragma mark Private Methods
 

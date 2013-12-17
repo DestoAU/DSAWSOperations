@@ -7,7 +7,7 @@
 //
 
 #import "DSSimpleDBOperation.h"
-#import <AWSSimpleDB/AWSSimpleDB.h>
+#import <AWSiOSSDK/SimpleDB/AWSSimpleDB.h>
 
 #pragma mark Private Methods
 

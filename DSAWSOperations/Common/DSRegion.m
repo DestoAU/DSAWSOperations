@@ -9,18 +9,18 @@
 #import "DSRegion.h"
 #import <objc/runtime.h>
 
-#import <AWSRuntime/AWSRuntime.h>
-#import <AWSAutoScaling/AWSAutoScaling.h>
-#import <AWSEC2/AWSEC2.h>
-#import <AWSCloudWatch/AWSCloudWatch.h>
-#import <AWSDynamoDB/AWSDynamoDB.h>
-#import <AWSElasticLoadBalancing/AWSElasticLoadBalancing.h>
-#import <AWSSimpleDB/AWSSimpleDB.h>
-#import <AWSS3/AWSS3.h>
-#import <AWSSES/AWSSES.h>
-#import <AWSSNS/AWSSNS.h>
-#import <AWSSQS/AWSSQS.h>
-#import <AWSSecurityTokenService/AWSSecurityTokenService.h>
+#import <AWSiOSSDK/Runtime/AWSRuntime.h>
+#import <AWSiOSSDK/AutoScaling/AWSAutoScaling.h>
+#import <AWSiOSSDK/EC2/AWSEC2.h>
+#import <AWSiOSSDK/CloudWatch/AWSCloudWatch.h>
+#import <AWSiOSSDK/DynamoDB/AWSDynamoDB.h>
+#import <AWSiOSSDK/ElasticLoadBalancing/AWSElasticLoadBalancing.h>
+#import <AWSiOSSDK/SimpleDB/AWSSimpleDB.h>
+#import <AWSiOSSDK/S3/AWSS3.h>
+#import <AWSiOSSDK/SES/AWSSES.h>
+#import <AWSiOSSDK/SNS/AWSSNS.h>
+#import <AWSiOSSDK/SQS/AWSSQS.h>
+#import <AWSiOSSDK/SecurityTokenService/AWSSecurityTokenService.h>
 
 #define REGION_ENCODING_KEY_AMAZON_REGION @"RegionEncodingKeyAmazonRegion"
 #define REGION_ENCODING_KEY_EC2REGION_NAME @"RegionEncodingKeyEC2RegionName"
