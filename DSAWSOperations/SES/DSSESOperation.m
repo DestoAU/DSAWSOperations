@@ -7,7 +7,7 @@
 //
 
 #import "DSSESOperation.h"
-#import <AWSSES/AWSSES.h>
+#import <AWSiOSSDK/SES/AWSSES.h>
 
 #pragma mark Private Methods
 

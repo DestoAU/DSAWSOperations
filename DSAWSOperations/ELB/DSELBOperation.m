@@ -7,7 +7,7 @@
 //
 
 #import "DSELBOperation.h"
-#import <AWSElasticLoadBalancing/AWSElasticLoadBalancing.h>
+#import <AWSiOSSDK/ElasticLoadBalancing/AWSElasticLoadBalancing.h>
 
 #pragma mark Private Methods
 

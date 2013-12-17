@@ -7,7 +7,7 @@
 //
 
 #import "DSS3Operation.h"
-#import <AWSS3/AWSS3.h>
+#import <AWSiOSSDK/S3/AWSS3.h>
 
 #pragma mark Private Methods
 

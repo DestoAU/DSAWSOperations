@@ -7,7 +7,7 @@
 //
 
 #import "DSDynamoDBOperation.h"
-#import <AWSDynamoDB/AWSDynamoDB.h>
+#import <AWSiOSSDK/DynamoDB/AWSDynamoDB.h>
 
 #pragma mark Private Methods
 

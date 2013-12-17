@@ -7,7 +7,7 @@
 //
 
 #import "DSCloudWatchOperation.h"
-#import <AWSCloudWatch/AWSCloudWatch.h>
+#import <AWSiOSSDK/iOSSDK/CloudWatch/AWSCloudWatch.h>
 
 #pragma mark Private Methods
 

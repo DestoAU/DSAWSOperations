@@ -93,7 +93,7 @@ Creating your own provider is easy:
 
 ```objc
 #import "YourAuthenticationProvider.h"
-#import <AWSRuntime/AWSRuntime.h>
+#import <AWSiOSSDK/Runtime/AWSRuntime.h>
 #import "DSRegion.h"
 
 @implementation DSAWSOperationAuthenticationProvider

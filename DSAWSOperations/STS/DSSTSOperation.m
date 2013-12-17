@@ -7,7 +7,7 @@
 //
 
 #import "DSSTSOperation.h"
-#import <AWSSecurityTokenService/AWSSecurityTokenService.h>
+#import <AWSiOSSDK/SecurityTokenService/AWSSecurityTokenService.h>
 
 #pragma mark Private Methods
 

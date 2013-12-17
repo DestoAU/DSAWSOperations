@@ -7,7 +7,7 @@
 //
 
 #import "DSAWSOperation.h"
-#import <AWSRuntime/AWSRuntime.h>
+#import <AWSiOSSDK/Runtime/AWSRuntime.h>
 #import "DSAWSOperationQueue.h"
 #import "DSRegion.h"
 #import "NSArray+DSArrayFlattening.h"
