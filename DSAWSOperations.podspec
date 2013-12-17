@@ -12,6 +12,6 @@ Pod::Spec.new do |s|
   s.platform     = :ios, '6.0'
   s.source_files = 'DSAWSOperations', 'DSAWSOperations/**/*.{h,m}'
   s.exclude_files = 'Classes/Exclude'
-  s.frameworks = 'AWSAutoScaling', 'AWSCloudWatch', 'AWSDynamoDB', 'AWSEC2', 'AWSElasticLoadBalancing', 'AWSRuntime', 'AWSS3', 'AWSSecurityTokenService', 'AWSSES', 'AWSSimpleDB', 'AWSSNS', 'AWSSQS'
   s.requires_arc = true
+  s.dependency 'AWSiOSSDK', '~> 1.7.0'
 end
