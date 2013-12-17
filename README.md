@@ -38,7 +38,7 @@ The Operation can decide to continue waiting in the background based on a provid
 
 For convenience, some waiters come built in:
 
-```
+```objc
 DSEC2Operation *op = [DSEC2Operation waitOperationUntilInstanceRunning:someInstance owner:self completion:^(id response, NSException *exception) {
 	// ...
 }];
@@ -47,7 +47,7 @@ DSEC2Operation *op = [DSEC2Operation waitOperationUntilInstanceRunning:someInsta
 
 Others can be easily built based on the key path of the returned objects.
 
-```
+```objc
 EC2DescribeImagesRequest *request = [[EC2DescribeImagesRequest alloc] init];
 [request addImageId:i.imageId];
 DSEC2Operation *op = [DSEC2Operation waitOperationWithRequest:request
